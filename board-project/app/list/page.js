@@ -8,6 +8,13 @@ export default async function List() {
   const db = client.db('board')
   let result = await db.collection('post').find().toArray()
 
+  // MongoDB ObjectId를 문자열로 변환하여 직렬화 문제 해결
+  const serializedResult = result.map(item => ({
+    ...item,
+    _id: item._id.toString(),
+    createdAt: item.createdAt?.toISOString() || null
+  }))
+
   return (
     <div className="list-bg">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
@@ -27,7 +34,7 @@ export default async function List() {
           </button>
         </Link>
       </div>
-      {result.map((item, i) => (
+      {serializedResult.map((item, i) => (
         <ListItem key={i} item={item} />
       ))}
     </div>

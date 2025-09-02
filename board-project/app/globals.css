@@ -85,6 +85,13 @@ a {
   font-size: 14px;
 }
 
+.author-info {
+  color: #999 !important;
+  font-size: 12px !important;
+  margin-top: 5px;
+  font-style: italic;
+}
+
 .button-area {
   display: flex;
   gap: 8px;
@@ -241,4 +248,37 @@ a {
   display: flex;
   gap: 8px;
   align-items: center;
+}
+
+/* 네비게이션 바 - 게시판 디자인과 어울리게 */
+.navbar {
+  background-color: #f8f9fa;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #dee2e6;
+  margin-bottom: 20px;
+}
+
+.navbar .logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.navbar a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 10px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.navbar a:hover {
+  background-color: #e9ecef;
+  text-decoration: none;
 }

@@ -58,6 +58,9 @@ export default function ListItem({ item }) {
           <h4>{item.title}</h4>
         </Link>
         <p>{item.content}</p>
+        {item.author && (
+          <p className="author-info">작성자: {item.author}</p>
+        )}
       </div>
       <div className="button-area">
         <Link href={`/edit/${item._id}`}>

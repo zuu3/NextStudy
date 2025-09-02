@@ -1,5 +1,5 @@
 /* app/detail/[id]/page.js */
-import { connectDB } from "@/util/database"
+import { connectDB } from "@/app/util/database"
 import { ObjectId } from "mongodb"
 //props = {params: {id:값},searchParams:{}}
 export default async function Detail(props) {
@@ -14,6 +14,11 @@ export default async function Detail(props) {
     <div>
       <h4>{result.title}</h4>
       <p>{result.content}</p>
+      {result.author && (
+        <p style={{ color: '#999', fontSize: '12px', marginTop: '10px' }}>
+          작성자: {result.author}
+        </p>
+      )}
     </div>
   )
 }

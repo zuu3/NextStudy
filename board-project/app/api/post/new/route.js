@@ -1,14 +1,24 @@
 /* app/api/post/new/route.js */
 import { connectDB } from "@/util/database.js";
 import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/api/auth/[...nextauth]/route";
 
 // App Router 방식에 맞게 POST 메서드로 작성
 export async function POST(request) {
+
+  let session = await getServerSession(authOptions); //2-1. session 정보가져오기
+  console.log(session);
+
   try {
     // formData를 비동기로 파싱 (POST 요청의 form 데이터 받기)
     const formData = await request.formData();
     // formData의 entries를 객체로 변환 (key-value 쌍으로 변환)
-    const body = Object.fromEntries(formData.entries());
+    let body = Object.fromEntries(formData.entries());
+
+    if (session) {
+      body.author = session.user.email; //2-2. body 정보에 author 추가
+    }
 
     // 기본 검증
     if (!body.title || body.title.trim() === "") {
@@ -25,6 +35,7 @@ export async function POST(request) {
     await db.collection("post").insertOne({
       title: body.title,
       content: body.content,
+      author: body.author, // 작성자 이메일 추가
       createdAt: new Date()
     });
 
