@@ -1,0 +1,64 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "install-deps",
+			"type": "shell",
+			"command": "npm install",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "next-build",
+			"type": "shell",
+			"command": "npm run build",
+			"args": [],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "next-build-2",
+			"type": "shell",
+			"command": "npm run build",
+			"args": [],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "npm-install-bcrypt",
+			"type": "shell",
+			"command": "npm install",
+			"args": [],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build-after-bcrypt",
+			"type": "shell",
+			"command": "npm run build",
+			"args": [],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build-nextauth-callbacks",
+			"type": "shell",
+			"command": "npm run build",
+			"args": [],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build-validate-auth-tasks",
+			"type": "shell",
+			"command": "npm run build",
+			"args": [],
+			"isBackground": false,
+			"group": "build"
+		}
+	]
+}

@@ -32,7 +32,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <AuthProvider>
+        <AuthProvider session={session}>
           <div className="navbar">
             <Link href="/" className="logo">BSSM board</Link>
             <Link href="/list">글목록</Link>

@@ -1,5 +1,5 @@
 /* app/detail/[id]/page.js */
-import { connectDB } from "@/app/util/database"
+import { connectDB } from "@/util/database"
 import { ObjectId } from "mongodb"
 //props = {params: {id:값},searchParams:{}}
 export default async function Detail(props) {

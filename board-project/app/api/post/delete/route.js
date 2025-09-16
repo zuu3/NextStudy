@@ -32,8 +32,10 @@ export async function POST(request) {
       return NextResponse.json("삭제할 게시글을 찾을 수 없습니다.", { status: 404 });
     }
 
-    // 로그인한 사용자의 이메일과 게시글 작성자가 일치하는지 확인
-    if (post.author !== session.user.email) {
+    // 관리자면 모든 글 삭제 가능, 일반은 본인 글만
+    const isAdmin = session.user?.role === 'admin';
+    const isOwner = post.author === session.user.email;
+    if (!isAdmin && !isOwner) {
       return NextResponse.json("본인이 작성한 글만 삭제할 수 있습니다.", { status: 403 });
     }
 

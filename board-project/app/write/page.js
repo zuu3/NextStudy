@@ -1,5 +1,20 @@
 /* app/write/page.js */
-export default function Write() {
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/api/auth/[...nextauth]/route";
+import Link from "next/link";
+
+export default async function Write() {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return (
+      <div style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto' }}>
+        <h1>로그인 필요</h1>
+        <p>글쓰기는 로그인한 사용자만 가능합니다.</p>
+        <Link href="/api/auth/signin">로그인 하러가기</Link>
+      </div>
+    );
+  }
+
   return (
     <div style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto' }}>
       <h1>글 작성</h1>
